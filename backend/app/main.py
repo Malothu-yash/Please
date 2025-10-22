@@ -55,7 +55,7 @@ from fastapi.exceptions import RequestValidationError
 
 # Import application modules (some imports are optional; guarded)
 from app.config import settings
-from app.metrics import API_REQUESTS_TOTAL
+# from app.metrics import API_REQUESTS_TOTAL
 
 # Services and utilities (guard imports where optional)
 try:
