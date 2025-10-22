@@ -5,6 +5,15 @@ existing middleware or a dedicated endpoint elsewhere.
 """
 from __future__ import annotations
 from prometheus_client import Counter, Histogram
+# backend/app/metrics.py
+from prometheus_client import Counter
+
+API_REQUESTS_TOTAL = Counter(
+    "api_requests_total",
+    "Total number of API requests",
+    ["status"]
+)
+
 
 EMOTION_REQ_COUNTER = Counter(
     "emotion_requests_total",
