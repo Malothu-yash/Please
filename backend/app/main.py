@@ -268,14 +268,18 @@ def _append_dynamic_origin_if_needed(origin: Optional[str]):
                 print(f"[CORS][dynamic] Added origin at runtime: {origin}")
 
 # Use CORSMiddleware for standard flow; we still add extra dynamic handling in our per-request middleware
+origins = [
+    "https://please-malothu-yashs-projects.vercel.app",
+    "http://localhost:3000",  # for dev
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # may be mutated at runtime for dev
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["Authorization", "Content-Type", "Accept", "X-Requested-With", "X-CSRF-Token", "X-Debug-CORS"],
-    expose_headers=["X-Session-Id", "X-App-Version", "X-Deprecation"],
+    allow_headers=["*"],
 )
+
 
 APP_VERSION = os.getenv("APP_VERSION", "0.1.0")
 BOOT_TIME = time.time()
